@@ -19,7 +19,7 @@ def text2html(parts):
     
     for part in parts:
         tag = label2tag.get(part["label"], ("<p>", "</p>"))
-        output += (f"{tag[0]}{part['text']}{tag[1]}")
+        output += (f"{tag[0]}{part['text']}{tag[1]}\n")
     
     output += """
     </body>
