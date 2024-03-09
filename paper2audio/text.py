@@ -27,7 +27,7 @@ label2id = model.config.label2id
 num_labels = len(id2label)
 
 citations = re.compile(
-    r"\(([; ]*((?:\p{Uppercase_Letter}[\p{Alphabetic}'`-]+)(?:,? (?:(?:and |& )?(?:\p{Uppercase_Letter}[\p{Alphabetic}'`-]+)|(?:et al.?)))*(?:, *(?:19|20)[0-9][0-9][a-f,]?(?:, p.? [0-9]+)?| *\((?:19|20)[0-9][0-9][a-f,]?(?:, p.? [0-9]+)?\))))+\)",
+    r"\(?([; ]*((?:[\p{Uppercase_Letter}\d][\d\p{Alphabetic}'`-]+)(?:,? (?:(?:and |& )?(?:[\p{Uppercase_Letter}\d][\d\p{Alphabetic}'`-]+)|(?:et al.?)))*(?:, *(?:19|20)[0-9][0-9]([a-f,]*)?(?:, p.? [0-9]+)?| *\((?:19|20)[0-9][0-9]([a-f,]*)?(?:, p.? [0-9]+)?\))))+\)?",
     re.IGNORECASE,
 )
 

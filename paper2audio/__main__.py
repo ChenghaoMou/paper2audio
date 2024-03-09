@@ -8,6 +8,7 @@ from typer import Typer
 
 from paper2audio.audio import play
 from paper2audio.generate import generate
+from paper2audio.html import text2html
 from paper2audio.text import extract_layout
 
 app = Typer()
@@ -57,7 +58,7 @@ async def play_audio_async(
 
 
 @app.command()
-def main(
+def to_audio(
     path: str,
     voice_name: str = "en-US-Wavenet-D",
     cache_dir: str = ".cache",
@@ -89,6 +90,29 @@ def main(
     asyncio.run(generate_audio_async(parts, voice_name, cache_dir))
     asyncio.run(play_audio_async(parts, console, cache_dir))
 
+@app.command()
+def to_html(
+    path: str,
+    output: str = "output.html",
+):
+    parts = extract_layout(
+        path,
+        level="block",
+        exclude=[
+            "Footnote",
+            "Page-header",
+            "Page-footer",
+            "Table",
+            "Formula",
+            "Picture",
+        ],
+        stop_at_section="References",
+        merge_consecutive_section=True,
+        remove_citations=True,
+    )
+
+    with open(output, "w") as f:
+        f.write(text2html(parts))
 
 if __name__ == "__main__":
     app()

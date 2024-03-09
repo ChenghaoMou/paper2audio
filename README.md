@@ -16,13 +16,19 @@ Convert research papers to audio files. Currently, it reads one paragraph at a t
 - [x] Rule based noise reduction:
     - References
     - Citations
-- [x] TTS with GCP (This requires that you have an active project and have enabled TTS feature)
+- [x] TTS with GCP (This requires that you have an active project and have enabled TTS feature, make sure you are aware of the cost of doing so)
+- [x] Convert the paper to a beautiful yet minimal html file so you can use whatever TTS you might prefer
 
 ## Usage
 
 ```bash
-python -m paper2audio "/Users/chenghao/Zotero/storage/QFKMKFMV/Chen et al. - 2024 - Orion-14B Open-source Multilingual Large Language Models.pdf"
+python -m paper2audio to-audio "/Users/chenghao/Zotero/storage/QFKMKFMV/Chen et al. - 2024 - Orion-14B Open-source Multilingual Large Language Models.pdf"
+python -m paper2audio to-html "/Users/chenghao/Zotero/storage/QFKMKFMV/Chen et al. - 2024 - Orion-14B Open-source Multilingual Large Language Models.pdf" --output "output.html"
 ```
+
+## Examples
+
+Feel free to checkout the html output in `examples`.
 
 ## Acknowledgement
 
